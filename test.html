@@ -6,7 +6,7 @@
     <link href="common/common.css" type="text/css" rel="stylesheet">
     <style type="text/css">
     td {
-        margin: 20px;
+        padding: 20px;
         min-width: 50px;
     }
     </style>
@@ -54,11 +54,14 @@
                 if (r.responseText) {
                     console.log(JSON.stringify(params));
                     alert('测试后也不要查答案！\n测试后也不要查答案！\n测试后也不要查答案！\n\nFinishied!');
-                    $('*').remove();
+                    $('*').hide();
                 } else {
                     alert('Submission Failed !!!\nDo NOT close this page and immediately contact me please.');
                 }
             });
+        });
+        shortcut.add('ctrl+enter', function() {
+            $('button.next').click();
         });
     });
     </script>
@@ -104,7 +107,7 @@
             <!-- <tr><label>ambush</label><input type="text"></tr> -->
         </table>
 
-        <button class="next">next</button>
+        <button class="next">next (ctrl + enter)</button>
 
         <button class="submit">submit</button>
     </div>
