@@ -1,0 +1,21 @@
+@font-face {
+    font-family:'PingHei';
+    font-style:normal;
+    font-weight:200;
+    src:url("PingHei-light.woff") format("woff"), url("PingHei-light.ttf") format("truetype");
+}
+@font-face {
+    font-family:'PingHei';
+    font-style:normal;
+    font-weight:400;
+    src:url("PingHei-text.woff") format("woff"), url("PingHei-text.ttf") format("truetype");
+}
+* {
+    font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+}
+.container {
+    padding-left: 5%;
+}
+button.start {
+    margin-bottom: 50px;
+}

@@ -1,0 +1,142 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Vocabulary Learn</title>
+
+    <link href="common/common.css" type="text/css" rel="stylesheet">
+    <style type="text/css">
+    div.surveydescription {
+        position: absolute;
+        background: white;
+        margin-left: 0;
+        padding-left: 5%;
+        width: 94%;
+        min-height: 98%;
+    }
+    iframe {
+        /*display: block;*/
+        margin-left: 0;
+        min-width: 50px;
+        width: 100%;
+        max-width: 1200px;
+        height: 80%;
+    }
+    img.example {
+        width: 500px;
+        border: 1px solid lightgray;
+    }
+    img.rest {
+        margin-left: 50px;
+        height: 500px;
+    }
+    </style>
+
+    <script type="text/javascript" src="common/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="common/common.js"></script>
+    <script type="text/javascript">
+    var INDEX = 0;
+
+    $(function() {
+        browserCheck();
+        var tests = getTests('learn'),
+            rand_tests = tests.shuffle();
+        $('div.main').hide();
+        $('button.submit').hide();
+        $('span.all').text(tests.length);
+
+        $('button.start').click(function() {
+            $('div.main').show();
+            rand_tests[INDEX].start(INDEX);
+            $('div.surveydescription').empty().append($('<img class="rest" src="common/rest.jpg" />'));
+        });
+        $('button.show-hints').click(function() {
+            $('label.hint').show();
+            rand_tests[INDEX].events.push({ type: 'hint', time: Date.now() });
+        });
+        $('button.next').click(function() {
+            rand_tests[INDEX].stop();
+            if (INDEX + 1 < tests.length) {
+                INDEX += 1;
+                // show 3s blank
+                $('div.surveydescription').show();
+                setTimeout(function() { rand_tests[INDEX].start(INDEX); }, 100);
+            } else {
+                $('button.next').hide();
+                $('.show-hints').hide();
+                $('button.submit').show();
+            }
+        });
+        $('button.submit').click(function() {
+            browserCheck();
+            var url = window.location.href;
+            var params = deparam(url.substring(url.indexOf('?') + 1));
+            params.result = JSON.stringify($.map(tests, function(t, index) {
+                return {type: t.type, time: t.endTime - t.beginTime, events: t.events};
+            }));
+            $.get('http://166.111.139.42:8001/learn/', params).fail(function(r) {
+                if (r.responseText) {
+                    console.log(JSON.stringify(params));
+                    alert('Finishied!');
+                    $('*').remove();
+                } else {
+                    alert('Submission Failed !!!\nDo NOT close this page and immediately contact me please.');
+                }
+            });
+        });
+        window.addEventListener("message", function(event) {
+            console.log('Message recieved: ' + event.data);
+            rand_tests[INDEX].events.push(JSON.parse(event.data));
+        }, false);
+    });
+    </script>
+</head>
+
+<body>
+
+<div id="ctl00_ContentPlaceHolder1_JQ1_divDec" class="surveydescription">
+<span id="ctl00_ContentPlaceHolder1_JQ1_lblQuestionnaireDescription" style="vertical-align: middle;"><p></p>
+<p><b>实验前请刷新该页面以确保最新</b></p>
+<p>实验内容：通过2种界面学习单词的拼写和含义（1-3个主要义项）</p>
+<br>
+<p></p>
+<p><span style="line-height:1.5;">注意：</span></p>
+<ul>
+    <li>为保证网速，请通过<b>校园网</b>直接访问，实验不会消耗任何流量</li>
+    <li>每个单词学习不限时，但您<b>只有一次学习机会</b>，请尽可能学习<b>多个不同的意思</b></li>
+    <li>学习<b>权威释义</b>，而不是网络含义</li>
+    <li>充分利用图片、语音、例句等信息可帮助记忆</li>
+    <li>全部学习完毕后须<b>点击“提交确认”按钮作为凭据</b></li>
+</ul>
+</span>
+<br>
+<p></p>
+<p><span style="line-height:1.5;">1. 标准字典 - 浏览字典词条学习，例如：</span></p>
+<p><span style="line-height:1.5;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img class="example" src="common/example1.png" />&nbsp;&nbsp;<br>
+<b><span style="line-height:1.5;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（详细释义、图片、例句可帮助记忆，请仔细浏览）&nbsp;&nbsp;</span></b>
+<br>
+<p><span style="line-height:1.5;">2. 电影片段 - 观看包含待学习单词的电影片段，例如：</span></p>
+<p></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img class="example" src="common/example2.png" /></p>
+<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（戴上耳机观看片段，1080P大显示屏效果更佳）</b>
+<br>
+<p></p>
+<button class="start">start learning</button>
+</div>
+
+<div class="main">
+    <p><span class="cur">0</span> / <span class="all">0</span></p>
+
+    <p>
+        <label class="word"></label>
+        <button class="next">next</button>
+        <!-- <label class="show-hints">&nbsp;&nbsp;单词确切解释请点击 → </label>
+        <button class="show-hints">show hints</button> -->
+        <label class="hint"></label>
+        <button class="submit">submit confirmation</button>
+    </p>
+</div>
+
+<iframe></iframe>
+
+</body>
+</html>

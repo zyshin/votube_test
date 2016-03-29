@@ -1,0 +1,77 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>User Study</title>
+
+    <link href="common/common.css" type="text/css" rel="stylesheet">
+    <style type="text/css">
+    body {
+        padding-left: 5%;
+    }
+    li {
+        margin: 10px;
+    }
+    </style>
+
+    <script type="text/javascript" src="common/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="common/common.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        browserCheck();
+        var url = window.location.href;
+        var params = deparam(url.substring(url.indexOf('?') + 1));      
+        var id = Number(params.id || 0);
+        if (id < 0 || id >= LIDS.length) {
+            alert('invalid parameters: ' + JSON.stringify(params));
+            return;
+        }
+        $('h2').text($('h2').text() + id);
+        var lid = LIDS[id], tid = TIDS[id];
+        var params = [
+            {start: 0, end: 36, id: tid.repeat(3), pid: id},
+            {start: 0, end: 12, id: lid, pid: id},
+            {start: 0, end: 12, id: tid, pid: id},
+            {start: 12, end: 24, id: lid, pid: id},
+            {start: 12, end: 24, id: tid, pid: id},
+            {start: 24, end: 36, id: lid, pid: id},
+            {start: 24, end: 36, id: tid, pid: id},
+            {start: 0, end: 36, id: tid.repeat(3), pid: id},
+        ];
+        $.each($('a.mypage'), function(index, a) {
+            $(a).attr('href', $(a).attr('href') + $.param(params[index]));
+        });
+    });
+    </script>
+</head>
+
+<body>
+
+<h2>Welcome, Participant No. </h2>
+实验前请仔细阅读：
+<ul>
+    <li>请先刷新该页面确保最新</li>
+    <li>您将通过2种不同的方法学习共36个单词，然后通过多次测试获知您的记忆曲线</li>
+    <li>为准确衡量学习效果，实验的<b>一个月内</b>都不要复习这些单词或学习额外单词</li><!-- （如背托福、GRE词汇书） -->
+    <li><b>测试后也不要查答案！测试后也不要查答案！测试后也不要查答案！</b>重要的事情说三遍</li>
+</ul>
+
+实验步骤：
+<ol>
+    <li><a class="mypage" href="test.html?" target="_blank">Pretest</a> （开始学习之前，pretest会先测试您原本对这36个新单词的熟悉情况）</li>
+    <li>
+        Learning and test （36个单词将以12个为一组分为3个session来学习，每个session学习后会有一个小测）
+        <ul>
+        <li><a class="mypage" href="learn.html?" target="_blank">Session1 - learn</a></li>
+        <li><a class="mypage" href="test.html?" target="_blank">Session1 - test</a></li>
+        <li><a class="mypage" href="learn.html?" target="_blank">Session2 - learn</a></li>
+        <li><a class="mypage" href="test.html?" target="_blank">Session2 - test</a></li>
+        <li><a class="mypage" href="learn.html?" target="_blank">Session3 - learn</a></li>
+        <li><a class="mypage" href="test.html?" target="_blank">Session3 - test</a></li>
+        <li><a href="http://f.sojump.cn/jq/6944951.aspx" target="_blank">Post-learning questionnaire</a></li>
+        </ul>
+    </li>
+    <li><a class="mypage" href="test.html?" target="_blank">Posttest</a> （全部学习后，我们还会安排4次posttest来测量这些单词的长期记忆情况，通常在学习后的第1, 2, 6, 28天）</li>
+</ol>
+
+</body>
+</html>
