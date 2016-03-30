@@ -49,9 +49,10 @@ function Test(type, text, learn) {
             this.url = 'http://166.111.139.15:8003/votube/?word=' + text[0];
             // this.url = 'http://localhost:8000/votube/?word=' + text[0];
         } else {
-            this.url = (text[0] === 'nape') ?
-                'http://pi.cs.tsinghua.edu.cn/lab/moviedict/study/nape.html' : 
-                'http://cn.bing.com/dict/clientsearch?q=' + text[0];
+            // this.url = (text[0] === 'nape') ?
+            //     'http://pi.cs.tsinghua.edu.cn/lab/moviedict/study/nape.html' : 
+            //     'http://cn.bing.com/dict/clientsearch?q=' + text[0];
+            this.url = 'http://166.111.139.15:8002/proxy/?youdao=&url=http://dict.youdao.com/w/' + text[0];
         }
     } else {
         this.element = $('<tr>');
