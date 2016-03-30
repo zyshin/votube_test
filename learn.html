@@ -59,7 +59,7 @@
                 INDEX += 1;
                 // show 3s blank
                 $('div.surveydescription').show();
-                setTimeout(function() { rand_tests[INDEX].start(INDEX); }, 100);
+                setTimeout(function() { rand_tests[INDEX].start(INDEX); }, 3000);
             } else {
                 $('button.next').hide();
                 $('.show-hints').hide();
@@ -130,7 +130,7 @@
 <button class="start">start learning</button>
 </div>
 
-<div class="main">
+<div class="main container">
     <p><span class="cur">0</span> / <span class="all">0</span></p>
 
     <p>
