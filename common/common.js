@@ -4,7 +4,7 @@ var WORDS = [
     'chafe', 'soothe', 'amendment', 'avert', 'speculate', 'monologue', 'provoke', 'elliptical', 'prank', 'delinquent', 'reprimand', 'refuge', 'falter', 'volatile', 'monopoly', 'wage', 'pillar', 'pedestrian', 'surrogate', 'sovereign', 'antidote', 'malleable', 'depot', 'dismantle'
 ];
 var DEFINITIONS = [
-    '擦痛; 蹭疼', '使镇定; 缓和 (疼痛或不适)', '修正案; 修改', '防止\n转移 (视线)', '猜测\n做投机买卖', '垄断; 独有', '对…挑衅\n引起', '椭圆形的\n隐晦的', '恶作剧\n打扮; 装饰', '(尤指青少年) 累犯的; 少年犯', '训斥; 谴责', '避难; 避难所; 收容所; 庇护', '衰退\n犹豫', '变化无常的; 情绪不稳定的', '独白; 独角戏', '工资\n发动 (运动或战争)', '柱子\n(系统、协议的) 核心\n栋梁', '行人\n平庸乏味的', '替代的; 替代者; 替代物', '(人或机构的权力) 至高无上的', '解毒药; 克服…的良方', '易受别人影响的; 易被别人控制的', '公共汽车站; 火车站\n仓库; 库房', '拆除; 逐步废除',
+    '擦痛; 蹭疼', '使镇定; 缓和 (疼痛或不适)', '修正案; 修改', '防止\n转移 (视线)', '猜测\n做投机买卖', '独白; 独角戏', '对…挑衅\n引起', '椭圆形的\n隐晦的', '恶作剧\n打扮; 装饰', '(尤指青少年) 累犯的; 少年犯', '训斥; 谴责', '避难; 避难所; 收容所; 庇护', '衰退\n犹豫', '变化无常的; 情绪不稳定的', '垄断; 独有', '工资\n发动 (运动或战争)', '柱子\n(系统、社会的) 核心;栋梁', '行人\n平庸乏味的', '替代的; 替代者; 替代物', '具有独立主权的; (人或机构的权力) 至高无上的', '解毒药; 克服…的良方', '易受别人影响的; 易被别人控制的', '公共汽车站; 火车站\n仓库; 库房', '拆除; 逐步废除'
 ];
 
 function browserCheck() {
@@ -102,7 +102,7 @@ function getTests(learn) {
     var url = window.location.href,
         params = deparam(url.substring(url.indexOf('?') + 1)),
         start = Number(params.start || 0),
-        end = Number(params.end || 36);
+        end = Number(params.end || 24);
     if (start < 0 || start >= WORDS.length || end <= 0 || end > WORDS.length || !params.id || params.id.length != end - start) {
         alert('invalid parameters: ' + JSON.stringify(params) + '\n试验结果将不会被保存，如果继续后果自负！\n请与主试联系。');
         return;

@@ -48,7 +48,7 @@
             var url = window.location.href;
             var params = deparam(url.substring(url.indexOf('?') + 1));
             params.result = JSON.stringify($.map(tests, function(t, index) {
-                return {type: t.type, answer: t.validate(), time: t.endTime - t.beginTime, events: t.events};
+                return {type: t.type, answer: t.validate(), time: t.endTime - t.beginTime/*, events: t.events*/};
             }));
             $.get('http://166.111.139.42:8001/vocabulary/', params).fail(function(r) {
                 if (r.responseText) {
@@ -90,7 +90,7 @@
     <p><span style="line-height:1.5;">2. 单词填空 - 根据给定释义写出对应的英文单词，例如：</span></p>
     <p></p>
     <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="line-height:1.5;">- 颈背</span></p>
-    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;英文：<u>&nbsp;<span style="color:#fe2419;">nape</span></u>&nbsp;&nbsp;&nbsp;（尽可能写出你实验内学到的精确单词，而不是过去就会的同义词如neck）</p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;英文：<u>&nbsp;<span style="color:#fe2419;">nape</span></u>&nbsp;&nbsp;&nbsp;（实验前：尽可能写出所有你会的同义词neck, nape, ...；实验后：只写实验中学到的精确单词nape，而不是过去就会的同义词如neck）</p>
     <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="line-height:1.5;">- 用凝固汽油弹攻击</span></p>
     <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;英文：<u>&nbsp;<span style="color:#fe2419;">nape</span></u>&nbsp;&nbsp;&nbsp;（多个中文解释可能对应同一单词）</p>
     <br>

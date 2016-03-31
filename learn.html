@@ -71,7 +71,7 @@
             var url = window.location.href;
             var params = deparam(url.substring(url.indexOf('?') + 1));
             params.result = JSON.stringify($.map(tests, function(t, index) {
-                return {type: t.type, time: t.endTime - t.beginTime, events: t.events};
+                return {type: t.type, time: t.endTime - t.beginTime/*, events: t.events*/};
             }));
             $.get('http://166.111.139.42:8001/learn/', params).fail(function(r) {
                 if (r.responseText) {
