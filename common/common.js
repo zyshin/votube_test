@@ -1,10 +1,10 @@
 var LIDS = ['000001011111', '000101010111', '010101010101', '110101010100', '111101010000', '111111000000', '111110100000', '111010101000', '101010101010', '001010101011', '000010101111', '000000111111'];
 var TIDS = ['001010101011', '000010101111', '000000111111', '000001011111', '000101010111', '010101010101', '110101010100', '111101010000', '111111000000', '111110100000', '111010101000', '101010101010'];
 var WORDS = [
-    'negro', 'desegregate', 'sergeant', 'crooked', 'cripple', 'cunning', 'appliance', 'gospel', 'luscious', 'imbecile', 'platoon', 'dictatorship', 'sneak', 'spook', 'hassle', 'titanium', 'nape', 'jabber', 'beatnik', 'stinging', 'onslaught', 'tuck', 'broil', 'autograph', 'stew', 'saute', 'candid', 'raccoon', 'escalation', 'a crock of', 'vet', 'ambush', 'retread', 'porch', 'gimp', 'panther'
+    'chafe', 'soothe', 'amendment', 'avert', 'speculate', 'monologue', 'provoke', 'elliptical', 'prank', 'delinquent', 'reprimand', 'refuge', 'falter', 'volatile', 'monopoly', 'wage', 'pillar', 'pedestrian', 'surrogate', 'sovereign', 'antidote', 'malleable', 'depot', 'dismantle'
 ];
 var DEFINITIONS = [
-    '黑人；黑人的', '废止种族隔离', '军士；中士', '弯曲的；扭曲的', '跛子；残废的人', '狡猾的；伶俐的', '（家用）电器；器具', '（圣经）福音', '（人）肉感的；多汁的', '低能；弱智；废柴', '（军队的）排', '独裁；专政', '偷偷溜；偷偷地做', '鬼；幽灵（同ghost）', '争执；争吵', '钛（金属元素）', '用凝固汽油弹攻击', '叽里咕噜地说；BB', '奇装异服言行乖僻的人；“垮了的一代”', '激烈的；刺人的', '猛攻；突击', '...in    把…塞进；藏入', '烤；炙（肉等）', '亲笔签名', '炖菜', '炒；炒菜', '坦白的（说）；直言不讳的', '浣熊', '(战争)逐步升级；扩大', '一坛子的；一堆（废话）', '兽医', '埋伏；伏击', '翻新修补（轮胎）', '门廊；门厅', '瘸子', '黑豹；美洲豹',
+    '擦痛; 蹭疼', '使镇定; 缓和 (疼痛或不适)', '修正案; 修改', '防止\n转移 (视线)', '猜测\n做投机买卖', '垄断; 独有', '对…挑衅\n引起', '椭圆形的\n隐晦的', '恶作剧\n打扮; 装饰', '(尤指青少年) 累犯的; 少年犯', '训斥; 谴责', '避难; 避难所; 收容所; 庇护', '衰退\n犹豫', '变化无常的; 情绪不稳定的', '独白; 独角戏', '工资\n发动 (运动或战争)', '柱子\n(系统、协议的) 核心\n栋梁', '行人\n平庸乏味的', '替代的; 替代者; 替代物', '(人或机构的权力) 至高无上的', '解毒药; 克服…的良方', '易受别人影响的; 易被别人控制的', '公共汽车站; 火车站\n仓库; 库房', '拆除; 逐步废除',
 ];
 
 function browserCheck() {
@@ -15,7 +15,7 @@ function browserCheck() {
         isWindows = window.navigator.userAgent.indexOf("Win") > -1;
     if(isChromium && isGoogle && !isOpera && !isIEedge && isWindows) {
        // is Google chrome
-    } else { 
+    } else {
        // not Google chrome
        alert('Please use Chrome on Windows to view this page.');
        $('*').hide();
@@ -50,7 +50,7 @@ function Test(type, text, learn) {
             // this.url = 'http://localhost:8000/votube/?word=' + text[0];
         } else {
             // this.url = (text[0] === 'nape') ?
-            //     'http://pi.cs.tsinghua.edu.cn/lab/moviedict/study/nape.html' : 
+            //     'http://pi.cs.tsinghua.edu.cn/lab/moviedict/study/nape.html' :
             //     'http://cn.bing.com/dict/clientsearch?q=' + text[0];
             this.url = 'http://166.111.139.15:8002/proxy/?youdao=&url=http://dict.youdao.com/w/' + text[0];
         }
@@ -68,7 +68,7 @@ Test.prototype.start = function(index) {
     this.beginTime = Date.now();
     $('span.cur').text(index + 1);
     $('div.surveydescription').hide();
-    
+
     if (this.learn) {
         $('label.word').text(this.text[0]);
         $('label.hint').text(this.text[1]).hide();
@@ -87,7 +87,7 @@ Test.prototype.stop = function() {
         $('label.hint').text('');
     } else {
         this.element.hide();
-    }    
+    }
 };
 Test.prototype.validate = function() {
     var r = this.element.find('textarea').val();
@@ -147,7 +147,7 @@ shortcut = {
         //The function to be called at keypress
         var func = function(e) {
             e = e || window.event;
-            
+
             if(opt['disable_in_input']) { //Don't enable shortcut keys in Input, Textarea fields
                 var element;
                 if(e.target) element=e.target;
@@ -156,19 +156,19 @@ shortcut = {
 
                 if(element.tagName == 'INPUT' || element.tagName == 'TEXTAREA') return;
             }
-    
+
             //Find Which key is pressed
             if (e.keyCode) code = e.keyCode;
             else if (e.which) code = e.which;
             var character = String.fromCharCode(code).toLowerCase();
-            
+
             if(code == 188) character=","; //If the user presses , when the type is onkeydown
             if(code == 190) character="."; //If the user presses , when the type is onkeydown
 
             var keys = shortcut_combination.split("+");
             //Key Pressed - counts the number of valid keypresses - if it is same as the number of keys, the shortcut function is invoked
             var kp = 0;
-            
+
             //Work around for stupid Shift key bug created by using lowercase - as a result the shift+num combination was broken
             var shift_nums = {
                 "`":"~",
@@ -200,7 +200,7 @@ shortcut = {
                 'return':13,
                 'enter':13,
                 'backspace':8,
-    
+
                 'scrolllock':145,
                 'scroll_lock':145,
                 'scroll':145,
@@ -210,28 +210,28 @@ shortcut = {
                 'numlock':144,
                 'num_lock':144,
                 'num':144,
-                
+
                 'pause':19,
                 'break':19,
-                
+
                 'insert':45,
                 'home':36,
                 'delete':46,
                 'end':35,
-                
+
                 'pageup':33,
                 'page_up':33,
                 'pu':33,
-    
+
                 'pagedown':34,
                 'page_down':34,
                 'pd':34,
-    
+
                 'left':37,
                 'up':38,
                 'right':39,
                 'down':40,
-    
+
                 'f1':112,
                 'f2':113,
                 'f3':114,
@@ -245,19 +245,19 @@ shortcut = {
                 'f11':122,
                 'f12':123
             }
-    
-            var modifiers = { 
+
+            var modifiers = {
                 shift: { wanted:false, pressed:false},
                 ctrl : { wanted:false, pressed:false},
                 alt  : { wanted:false, pressed:false},
                 meta : { wanted:false, pressed:false}   //Meta is Mac specific
             };
-                        
+
             if(e.ctrlKey)   modifiers.ctrl.pressed = true;
             if(e.shiftKey)  modifiers.shift.pressed = true;
             if(e.altKey)    modifiers.alt.pressed = true;
             if(e.metaKey)   modifiers.meta.pressed = true;
-                        
+
             for(var i=0; k=keys[i],i<keys.length; i++) {
                 //Modifiers
                 if(k == 'ctrl' || k == 'control') {
@@ -276,7 +276,7 @@ shortcut = {
                     modifiers.meta.wanted = true;
                 } else if(k.length > 1) { //If it is a special key
                     if(special_keys[k] == code) kp++;
-                    
+
                 } else if(opt['keycode']) {
                     if(opt['keycode'] == code) kp++;
 
@@ -284,25 +284,25 @@ shortcut = {
                     if(character == k) kp++;
                     else {
                         if(shift_nums[character] && e.shiftKey) { //Stupid Shift key bug created by using lowercase
-                            character = shift_nums[character]; 
+                            character = shift_nums[character];
                             if(character == k) kp++;
                         }
                     }
                 }
             }
-            
-            if(kp == keys.length && 
+
+            if(kp == keys.length &&
                         modifiers.ctrl.pressed == modifiers.ctrl.wanted &&
                         modifiers.shift.pressed == modifiers.shift.wanted &&
                         modifiers.alt.pressed == modifiers.alt.wanted &&
                         modifiers.meta.pressed == modifiers.meta.wanted) {
                 callback(e);
-    
+
                 if(!opt['propagate']) { //Stop the event
                     //e.cancelBubble is supported by IE - this will kill the bubbling process.
                     e.cancelBubble = true;
                     e.returnValue = false;
-    
+
                     //e.stopPropagation works in Firefox.
                     if (e.stopPropagation) {
                         e.stopPropagation();
@@ -313,8 +313,8 @@ shortcut = {
             }
         }
         this.all_shortcuts[shortcut_combination] = {
-            'callback':func, 
-            'target':ele, 
+            'callback':func,
+            'target':ele,
             'event': opt['type']
         };
         //Attach the function with the event
