@@ -18,7 +18,8 @@
 
     $(function() {
         browserCheck();
-        var tests = getTests(),
+        var _tests = getTests(),
+            tests = [].concat.apply([], _tests),
             rand_tests = tests.shuffle();
         $('div.main').hide();
         $('button[class="submit"]').hide();
@@ -47,8 +48,11 @@
         $('button.submit').click(function() {
             var url = window.location.href;
             var params = deparam(url.substring(url.indexOf('?') + 1));
-            params.result = JSON.stringify($.map(tests, function(t, index) {
-                return {type: t.type, answer: t.validate(), time: t.endTime - t.beginTime/*, events: t.events*/};
+            params.result = JSON.stringify($.map(_tests, function(_t, index) {
+                // return {type: t.type, answer: t.validate(), time: t.endTime - t.beginTime/*, events: t.events*/};
+                var answers = $.map(_t, function (t, none) { return t.validate(); }),
+                    times = $.map(_t, function (t, none) { return t.endTime - t.beginTime; });
+                return {type: _t[0].type, answer: answers.join('+'), time: times.reduce(function(a, b) { return a + b; }) / times.length};
             }));
             $.get('http://166.111.139.42:8001/vocabulary/', params).fail(function(r) {
                 if (r.responseText) {

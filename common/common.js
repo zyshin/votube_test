@@ -56,7 +56,7 @@ function Test(type, text, learn) {
         }
     } else {
         this.element = $('<tr>');
-        this.element.append($('<td>').append($('<label>').html(text[type])));
+        this.element.append($('<td>').append($('<label>').html(text[type].replace('\n', '<br>'))));
         this.element.append($('<td>').append($('<textarea rows="5" cols="30"></textarea>')));
         if (type)
             this.element.find('textarea').attr('placeholder', '写出实验中学到的精确含义的1个单词\n回忆不起请留空');
@@ -111,7 +111,18 @@ function getTests(learn) {
         en = WORDS.slice(start, end),
         ch = DEFINITIONS.slice(start, end);
 
-    return $.map(Array(ids.length), function(none, index) { return new Test(ids[index], [en[index], ch[index]], learn); });
+    if (learn)
+        return $.map(Array(ids.length), function(none, index) { return new Test(ids[index], [en[index], ch[index]], learn); });
+    else {
+        var r = [];
+        for (var index = 0; index < ids.length; index++) {
+            if (ids[index])
+                r.push($.map(ch[index].split('\n'), function(chi, none) { return new Test(ids[index], [en[index], chi], learn); }));
+            else
+                r.push([new Test(ids[index], [en[index], ch[index]], learn)]);
+        }
+        return r;
+    }
 }
 
 
