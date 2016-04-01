@@ -56,12 +56,12 @@ function Test(type, text, learn) {
         }
     } else {
         this.element = $('<tr>');
-        this.element.append($('<td>').append($('<label>').html(text[type])));
+        this.element.append($('<td>').append($('<label>').html(text[type].replace('\n', '<br>'))));
         this.element.append($('<td>').append($('<textarea rows="5" cols="30"></textarea>')));
         if (type)
-            this.element.find('textarea').attr('placeholder', '尽可能写出多个你会的词');
+            this.element.find('textarea').attr('placeholder', '尽可能写出多个你会的词\n一行一个词\n不会请留空');
         else
-            this.element.find('textarea').attr('placeholder', '对于多义词请列出尽可能多个含义\n一行写一个意思');
+            this.element.find('textarea').attr('placeholder', '对于多义词请列出尽可能多个含义\n一行写一个意思\n不会请留空');
     }
 }
 Test.prototype.start = function(index) {

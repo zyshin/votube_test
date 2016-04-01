@@ -61,7 +61,7 @@ function Test(type, text, learn) {
         if (type)
             this.element.find('textarea').attr('placeholder', '写出实验中学到的精确含义的1个单词\n回忆不起请留空');
         else
-            this.element.find('textarea').attr('placeholder', '对于多义词请列出尽可能多个含义\n一行写一个意思');
+            this.element.find('textarea').attr('placeholder', '对于多义词列出实验中学到的多个含义\n一行写一个意思\n回忆不起请留空');
     }
 }
 Test.prototype.start = function(index) {
