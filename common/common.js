@@ -57,7 +57,7 @@ function Test(type, text, learn) {
     } else {
         this.element = $('<tr>');
         this.element.append($('<td>').append($('<label>').html(text[type].replace('\n', '<br>'))));
-        this.element.append($('<td>').append($('<textarea rows="5" cols="30"></textarea>')));
+        this.element.append($('<td>').append($('<textarea rows="5" cols="32" spellcheck="false"></textarea>')));
         if (type)
             this.element.find('textarea').attr('placeholder', '写出实验中学到的精确含义的1个单词\n回忆不起请留空');
         else

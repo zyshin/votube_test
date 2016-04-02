@@ -57,7 +57,7 @@ function Test(type, text, learn) {
     } else {
         this.element = $('<tr>');
         this.element.append($('<td>').append($('<label>').html(text[type].replace('\n', '<br>'))));
-        this.element.append($('<td>').append($('<textarea rows="5" cols="30"></textarea>')));
+        this.element.append($('<td>').append($('<textarea rows="5" cols="32" spellcheck="false"></textarea>')));
         if (type)
             this.element.find('textarea').attr('placeholder', '尽可能写出多个你会的词\n一行一个词\n不会请留空');
         else
