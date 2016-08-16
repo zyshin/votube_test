@@ -13,6 +13,13 @@
         width: 94%;
         min-height: 98%;
     }
+    .inline-block {
+        display: inline-block;
+        margin-right: 20px;
+    }
+    .word {
+        font-weight: bold;
+    }
     iframe {
         /*display: block;*/
         margin-left: 0;
@@ -96,14 +103,14 @@
 <div id="ctl00_ContentPlaceHolder1_JQ1_divDec" class="surveydescription">
 <span id="ctl00_ContentPlaceHolder1_JQ1_lblQuestionnaireDescription" style="vertical-align: middle;"><p></p>
 <p><b>实验前请刷新该页面以确保最新</b></p>
-<p>实验内容：通过2种界面学习单词的拼写和含义（1-3个主要义项）</p>
+<p>实验内容：交替通过2种界面学习单词的<b>含义</b></p>
 <br>
 <p></p>
 <p><span style="line-height:1.5;">注意：</span></p>
 <ul>
     <li>为保证网速，请通过<b>校园网</b>直接访问，实验不会消耗任何流量</li>
-    <li>每个单词学习不限时，但您<b>只有一次学习机会</b>，请尽可能学习<b>多个不同的意思</b></li>
-    <li>学习<b>权威释义</b>，而不是网络含义</li>
+    <li>每个单词学习不限时，但您<b>只有一次学习机会</b>，请尽可能记住1-3个主要义项</li>
+    <li>学习<b>词典释义</b>，而不是网络含义</li>
     <li>充分利用图片、语音、例句等信息可帮助记忆</li>
     <li>全部学习完毕后须<b>点击“提交确认”按钮作为凭据</b></li>
 </ul>
@@ -112,16 +119,16 @@
 <p></p>
 <table>
     <tr>
-        <td><p><span style="line-height:1.5;">1. 标准字典 - 浏览字典词条学习，例如：</span></p></td>
-        <td><p><span style="line-height:1.5;">2. 电影片段 - 观看包含待学习单词的电影片段，例如：</span></p><p></p></td>
+        <td><p><span style="line-height:1.5;">1. VoTube影视词典 - 利用影视片段的上下文学习</span></p><p></p></td>
+        <td><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="line-height:1.5;">2. 传统词典 - 浏览字典词条学习</span></p></td>
     </tr>
     <tr>
-        <td><p><span style="line-height:1.5;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img class="example" src="common/example1.png" />&nbsp;&nbsp;<br></td>
-        <td><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img class="example" src="common/example2.png" /></p></td>
+        <td><p><img class="example" src="common/example2.png" /></p></td>
+        <td><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img class="example" src="common/example1.png" /></p></td>
     </tr>
     <tr>
-        <td><b><span style="line-height:1.5;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（详细释义、图片、例句可帮助记忆，请仔细浏览）&nbsp;&nbsp;</span></b></td>
-        <td><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（戴上耳机观看若干片段，1080P大显示屏效果更佳）</b></td>
+        <td><b>（戴上耳机观看若干片段，1080P大显示屏效果更佳）</b></td>
+        <td><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（详细释义、图片、例句可帮助记忆，请仔细浏览）</b></td>
     </tr>
 </table>
 <br>
@@ -131,10 +138,10 @@
 </div>
 
 <div class="main container">
-    <p><span class="cur">0</span> / <span class="all">0</span></p>
+    <p class="inline-block"><span class="cur">0</span> / <span class="all">0</span></p>
 
-    <p>
-        <label class="word"></label>
+    <p class="inline-block">
+        <label class="word"></label>&nbsp;&nbsp;
         <button class="next">next</button>
         <!-- <label class="show-hints">&nbsp;&nbsp;单词确切解释请点击 → </label>
         <button class="show-hints">show hints</button> -->
