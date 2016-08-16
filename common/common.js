@@ -8,19 +8,23 @@ var DEFINITIONS = [
     '擦痛; 蹭疼', '使镇定; 缓和 (疼痛或不适)', '修正案; 修改', '防止\n转移 (视线)', '猜测\n做投机买卖', '独白; 独角戏', '对…挑衅\n引起', '椭圆形的\n隐晦的', '恶作剧\n打扮; 装饰', '(尤指青少年) 累犯的; 少年犯', '训斥; 谴责', '避难; 避难所; 收容所; 庇护', '衰退\n犹豫', '变化无常的; 情绪不稳定的', '垄断; 独有', '工资\n发动 (运动或战争)', '柱子\n(系统、社会的) 核心;栋梁', '行人\n平庸乏味的', '替代的; 替代者; 替代物', '具有独立主权的; (人或机构的权力) 至高无上的', '解毒药; 克服…的良方', '易受别人影响的; 易被别人控制的', '公共汽车站; 火车站\n仓库; 库房', '拆除; 逐步废除'
 ];
 
-function browserCheck() {
+function browserCheck(task) {
     var isChromium = window.chrome,
         isGoogle = window.navigator.vendor === "Google Inc.",
         isOpera = window.navigator.userAgent.indexOf("OPR") > -1,
         isIEedge = window.navigator.userAgent.indexOf("Edge") > -1,
         isWindows = window.navigator.userAgent.indexOf("Win") > -1;
-    if(isChromium && isGoogle && !isOpera && !isIEedge && isWindows) {
-       // is Google chrome
+    if(isChromium && isGoogle && !isOpera && !isIEedge && (task != 'learn' || isWindows)) {
+        // is Google chrome
     } else {
-       // not Google chrome
-       alert('Please use Chrome on Windows to view this page.');
-       $('*').hide();
-       window.close();
+        // not Google chrome
+        if (task == 'learn') {
+            alert('Please use Chrome on Windows to view this page.');
+        } else {
+            alert('Please use Chrome to view this page.');
+        }
+        $('*').hide();
+        window.close();
     }
 }
 function deparam(querystring) {
@@ -40,14 +44,14 @@ Array.prototype.shuffle = function shuffle(){
     return o;
 };
 
-function Test(type, text, learn) {
+function Test(type, text, task, pid) {
     this.type = type;   // For learning: 0 is standard, 1 is movie. For testing: 0 is en -> ch, 1 is ch -> en
     this.text = text;
-    this.learn = learn;
+    this.task = task;
     this.events = [];
-    if (learn) {
+    if (task == 'learn') {
         if (type) {
-            this.url = 'http://166.111.139.15:8003/votube/?word=' + text[0];
+            this.url = 'http://166.111.139.15:8003/votube/?pid=' + pid + '&word=' + text[0];
             // this.url = 'http://localhost:8000/votube/?word=' + text[0];
         } else {
             // this.url = (text[0] === 'nape') ?
@@ -60,9 +64,15 @@ function Test(type, text, learn) {
         this.element.append($('<td>').append($('<label>').html(text[type].replace('\n', '<br>'))));
         this.element.append($('<td>').append($('<textarea rows="5" cols="32" spellcheck="false"></textarea>')));
         if (type)
-            this.element.find('textarea').attr('placeholder', '写出实验中学到的精确含义的1个单词\n回忆不起请留空');
+            this.element.find('textarea').attr('placeholder', (task == 'pretest')?
+                '尽可能写出多个你会的词\n一行一个词\n不会请留空' :
+                '写出实验中学到的精确含义的1个单词\n回忆不起请留空，不要猜测'
+            );
         else
-            this.element.find('textarea').attr('placeholder', '对于多义词列出实验中学到的多个含义\n一行写一个意思\n回忆不起请留空');
+            this.element.find('textarea').attr('placeholder', (task == 'pretest')?
+                '尽可能回想词意\n对于多义词请列出尽可能多个含义\n一行写一个意思' :
+                '对于多义词列出实验中学到的多个含义\n一行写一个意思\n回忆不起请留空'
+            );
     }
 }
 Test.prototype.start = function(index) {
@@ -70,7 +80,7 @@ Test.prototype.start = function(index) {
     $('span.cur').text(index + 1);
     $('div.surveydescription').hide();
 
-    if (this.learn) {
+    if (this.task == 'learn') {
         $('label.word').text(this.text[0]);
         $('label.hint').text(this.text[1]).hide();
         $('iframe').attr('src', this.url);
@@ -82,7 +92,7 @@ Test.prototype.start = function(index) {
 Test.prototype.stop = function() {
     this.endTime = Date.now();
 
-    if (this.learn) {
+    if (this.task == 'learn') {
         $('iframe').attr('src', '');
         $('label.word').text('');
         $('label.hint').text('');
@@ -99,7 +109,7 @@ Test.prototype.validate = function() {
     return r;
 };
 
-function getTests(learn) {
+function getTests(task) {
     var url = window.location.href,
         params = deparam(url.substring(url.indexOf('?') + 1)),
         start = Number(params.start || 0),
@@ -112,15 +122,15 @@ function getTests(learn) {
         en = WORDS.slice(start, end),
         ch = DEFINITIONS.slice(start, end);
 
-    if (learn)
-        return $.map(Array(ids.length), function(none, index) { return new Test(ids[index], [en[index], ch[index]], learn); });
+    if (task == 'learn' || task == 'pretest')
+        return $.map(Array(ids.length), function(none, index) { return new Test(ids[index], [en[index], ch[index]], task, params.pid); });
     else {
         var r = [];
         for (var index = 0; index < ids.length; index++) {
             if (ids[index])
-                r.push($.map(ch[index].split('\n'), function(chi, none) { return new Test(ids[index], [en[index], chi], learn); }));
+                r.push($.map(ch[index].split('\n'), function(chi, none) { return new Test(ids[index], [en[index], chi], task); }));
             else
-                r.push([new Test(ids[index], [en[index], ch[index]], learn)]);
+                r.push([new Test(ids[index], [en[index], ch[index]], task)]);
         }
         return r;
     }

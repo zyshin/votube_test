@@ -18,7 +18,7 @@
 
     $(function() {
         browserCheck();
-        var _tests = getTests(),
+        var _tests = getTests('test'),
             tests = [].concat.apply([], _tests),
             rand_tests = tests.shuffle();
         $('div.main').hide();
