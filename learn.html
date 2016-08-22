@@ -52,9 +52,10 @@
         $('span.all').text(tests.length);
 
         $('button.start').click(function() {
+            $('div.surveydescription').hide();
             $('div.main').show();
-            rand_tests[INDEX].start(INDEX);
             $('div.surveydescription').empty().append($('<img class="rest" src="common/rest.jpg" />'));
+            rand_tests[INDEX].start(INDEX);
         });
         $('button.show-hints').click(function() {
             $('label.hint').show();
@@ -64,9 +65,7 @@
             rand_tests[INDEX].stop();
             if (INDEX + 1 < tests.length) {
                 INDEX += 1;
-                // show 3s blank
-                $('div.surveydescription').show();
-                setTimeout(function() { rand_tests[INDEX].start(INDEX); }, 3000);
+                rand_tests[INDEX].start(INDEX);
             } else {
                 $('button.next').hide();
                 $('.show-hints').hide();

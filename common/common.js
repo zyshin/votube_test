@@ -1,11 +1,14 @@
 var LIDS = ['000001011111', '000101010111', '010101010101', '110101010100', '111101010000', '111111000000', '111110100000', '111010101000', '101010101010', '001010101011', '000010101111', '000000111111', '101010101010', '000010101111', '111111000000', '110101010100', '000001011111', '001010101011', '000000111111', '111110100000', '010101010101', '111010101000', '111101010000', '000101010111'];
 // var TIDS = ['001010101011', '000010101111', '000000111111', '000001011111', '000101010111', '010101010101', '110101010100', '111101010000', '111111000000', '111110100000', '111010101000', '101010101010', '000000111111', '000101010111', '101010101010', '111110100000', '110101010100', '000001011111', '010101010101', '001010101011', '111111000000', '000010101111', '111010101000', '111101010000'];
 var TIDS = ['000000000000', '000000000000', '000000000000', '000000000000', '000000000000', '000000000000', '000000000000', '000000000000', '000000000000', '000000000000', '000000000000', '000000000000', '000000000000', '000000000000', '000000000000', '000000000000', '000000000000', '000000000000', '000000000000', '000000000000', '000000000000', '000000000000', '000000000000', '000000000000'];
+var TASKS = ['3122001302033210010201333033223012002111330201200121', '000001011111222222333333333333222222111111'];
 var WORDS = [
-    'chafe', 'soothe', 'amendment', 'avert', 'speculate', 'monologue', 'provoke', 'elliptical', 'prank', 'delinquent', 'reprimand', 'refuge', 'falter', 'volatile', 'monopoly', 'wage', 'pillar', 'pedestrian', 'surrogate', 'sovereign', 'antidote', 'malleable', 'depot', 'dismantle'
+    'indulge', 'poke', 'infantry', 'recess', 'dictatorship', 'ginger', 'sentiment', 'broil', 'tuck', 'gospel', 'groan', 'provoke', 'speculate', 'instantaneous', 'delirium', 'sovereign', 'inferior', 'sneak', 'hassle', 'porch', 'malfeasance', 'prank', 'candid', 'hunch', 'scruple', 'melancholy', 'banquet', 'imbecile', 'emissary', 'mortgage', 'repatriate', 'bail', 'genealogy', 'cripple', 'falter', 'subpoena', 'bequeath', 'stutter', 'depot', 'preach', 'slant', 'specimen', 'hemorrhage', 'onslaught', 'brat', 'raccoon', 'platoon', 'membrane', 'sting', 'diabetes', 'monopoly', 'foyer'
+    // 'raccoon', 'platoon', 'raccoon', 'platoon', 'raccoon', 'platoon', 'raccoon', 'platoon', 'raccoon', 'platoon', 'raccoon', 'platoon', 'raccoon', 'platoon', 'raccoon', 'platoon', 'raccoon', 'platoon', 'raccoon', 'platoon', 'raccoon', 'platoon', 'raccoon', 'platoon', 'raccoon', 'platoon', 'raccoon', 'platoon', 'raccoon', 'platoon', 'raccoon', 'platoon', 'raccoon', 'platoon', 'raccoon', 'platoon', 'raccoon', 'platoon', 'raccoon', 'platoon', 'raccoon', 'platoon', 'raccoon', 'platoon', 'raccoon', 'platoon', 'raccoon', 'platoon', 'raccoon', 'platoon', 'raccoon', 'platoon'
 ];
 var DEFINITIONS = [
-    '擦痛; 蹭疼', '使镇定; 缓和 (疼痛或不适)', '修正案; 修改', '防止\n转移 (视线)', '猜测\n做投机买卖', '独白; 独角戏', '对…挑衅\n引起', '椭圆形的\n隐晦的', '恶作剧\n打扮; 装饰', '(尤指青少年) 累犯的; 少年犯', '训斥; 谴责', '避难; 避难所; 收容所; 庇护', '衰退\n犹豫', '变化无常的; 情绪不稳定的', '垄断; 独有', '工资\n发动 (运动或战争)', '柱子\n(系统、社会的) 核心;栋梁', '行人\n平庸乏味的', '替代的; 替代者; 替代物', '具有独立主权的; (人或机构的权力) 至高无上的', '解毒药; 克服…的良方', '易受别人影响的; 易被别人控制的', '公共汽车站; 火车站\n仓库; 库房', '拆除; 逐步废除'
+    // '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52'
+    '烤；烤肉', '直率；坦诚', '残疾人；致残', '独裁；专政', '福音', '争吵；烦扰', '傻瓜', '猛攻', '排', '门廊；走廊', '浣熊', '偷偷的', '刺\n使疼痛', '塞入；夹入', '猜测；推测\n做投机买卖', '挑衅\n引起', '恶作剧', '犹豫', '垄断\n独有', '统治权；统治者', '车站；仓库', '戳\n露出\n(poke around)闲逛', '口吃', '内出血', '传票；传唤', '观点\n感情', '道德良知；顾忌', '姜', '布道；宣扬；说教', '沉溺\n纵容', '样本', '保释', '步兵', '预感', '休庭\n深处', '糖尿病', '神志不清；精神错乱', '膜', '倾斜的', '抵押；贷款', '宴会', '渎职', '臭小子', '门厅', '低等的', '使者', '家谱', '呻吟；叹气', '立刻', '遗赠', '忧郁的；忧郁症', '遣返'
 ];
 
 function browserCheck(task) {
@@ -76,17 +79,22 @@ function Test(type, text, task, pid) {
     }
 }
 Test.prototype.start = function(index) {
-    this.beginTime = Date.now();
     $('span.cur').text(index + 1);
-    $('div.surveydescription').hide();
-
     if (this.task == 'learn') {
+        $('div.surveydescription').show();
         $('label.word').text(this.text[0]);
         $('label.hint').text(this.text[1]).hide();
         $('iframe').attr('src', this.url);
+        // show 3s blank
+        var othis = this;
+        setTimeout(function() {
+            $('div.surveydescription').hide();
+            othis.beginTime = Date.now();
+        }, 3000);
     } else {
         this.element.show();
         this.element.find('textarea').focus();
+        this.beginTime = Date.now();
     }
 };
 Test.prototype.stop = function() {
@@ -112,15 +120,14 @@ Test.prototype.validate = function() {
 function getTests(task) {
     var url = window.location.href,
         params = deparam(url.substring(url.indexOf('?') + 1)),
-        start = Number(params.start || 0),
-        end = Number(params.end || 24);
-    if (start < 0 || start >= WORDS.length || end <= 0 || end > WORDS.length || !params.id || params.id.length != end - start) {
+        words = params.words;
+    if (words.length != WORDS.length || !params.id || params.id.length != (words.match(/[^0]/g) || []).length) {
         alert('invalid parameters: ' + JSON.stringify(params) + '\n试验结果将不会被保存，如果继续后果自负！\n请与主试联系。');
         return;
     }
     var ids = $.map(params.id.split(''), function(n, index) { return Number(n); }),
-        en = WORDS.slice(start, end),
-        ch = DEFINITIONS.slice(start, end);
+        en = $.map(words.split(''), function(v, i) { if (v > 0) return WORDS[Number(i)]; }),
+        ch = $.map(words.split(''), function(v, i) { if (v > 0) return DEFINITIONS[Number(i)]; });
 
     if (task == 'learn' || task == 'pretest')
         return $.map(Array(ids.length), function(none, index) { return new Test(ids[index], [en[index], ch[index]], task, params.pid); });

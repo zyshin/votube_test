@@ -25,7 +25,7 @@
         $('span.all').text(tests.length);
         
         $('button.start').click(function() {
-            $('div.surveydescription').fadeOut();
+            $('div.surveydescription').hide();
             $('div.main').show();            
             $.each(rand_tests, function(index, t) {
                 $('table').append(t.element);

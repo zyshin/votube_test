@@ -34,14 +34,16 @@
             return;
         }
         $('h2').text($('h2').text() + id);
-        var lid = LIDS[id % LIDS.length], tid = TIDS[id % LIDS.length];
+        var lid = LIDS[id % LIDS.length], tid = TIDS[id % TIDS.length], words = TASKS[id % TASKS.length];
         var params = [
-            {start: 0, end: 24, id: tid.repeat(2), pid: id},
-            {start: 0, end: 12, id: lid, pid: id},
-            {start: 0, end: 12, id: tid, pid: id},
-            {start: 12, end: 24, id: lid, pid: id},
-            {start: 12, end: 24, id: tid, pid: id},
-            {start: 0, end: 24, id: tid.repeat(2), pid: id},
+            // {start: 0, end: 24, id: tid.repeat(2), pid: id},
+            {words: words.replace(/[^1]/g, '0'), id: lid, pid: id},
+            {words: words.replace(/[^1]/g, '0'), id: tid, pid: id},
+            {words: words.replace(/[^2]/g, '0'), id: lid, pid: id},
+            {words: words.replace(/[^2]/g, '0'), id: tid, pid: id},
+            {words: words.replace(/[^3]/g, '0'), id: lid, pid: id},
+            {words: words.replace(/[^3]/g, '0'), id: tid, pid: id},
+            {words: words, id: tid.repeat(3), pid: id},
         ];
         $.each($('a.mypage'), function(index, a) {
             $(a).attr('href', $(a).attr('href') + $.param(params[index]));
@@ -60,23 +62,23 @@
 实验前请仔细阅读：
 <ul>
     <li>请先刷新该页面确保最新</li>
-    <li>您将通过2种不同的方法学习共24个单词，然后通过多次测试获知您的记忆曲线</li>
+    <li>您将通过2种不同的方法学习共36个单词，然后通过多次测试获知您的记忆曲线</li>
     <li>为准确衡量学习效果，实验的<b>一周内</b>都不要复习这些单词或学习额外单词</li><!-- （如背托福、GRE词汇书） -->
     <li><b>测试后也不要查答案！测试后也不要查答案！测试后也不要查答案！</b>重要的事情说三遍</li>
 </ul>
 
 实验步骤：
 <ol>
-    <li class="stage0"><a class="mypage" href="pretest.html?" target="_blank">Pretest</a> （开始学习前，pretest会先测试您原本对这24个词的熟悉情况）</li>
+    <!--<li class="stage0"><a class="mypage" href="pretest.html?" target="_blank">Pretest</a> （开始学习前，pretest会先测试您原本对这36个词的熟悉情况）</li>-->
     <li class="stage1">
-        Learning and test （24个单词将以12个为一组分为2个session来学习，每个session学习后会有一个小测）
+        Learning and test （36个单词将以12个为一组分为2个session来学习，每个session学习后会有一个小测）
         <ul>
         <li><a class="mypage" href="learn.html?" target="_blank">Session1 - learn</a></li>
         <li><a class="mypage" href="test.html?" target="_blank">Session1 - test</a></li>
         <li><a class="mypage" href="learn.html?" target="_blank">Session2 - learn</a></li>
         <li><a class="mypage" href="test.html?" target="_blank">Session2 - test</a></li>
-        <!-- <li><a class="mypage" href="learn.html?" target="_blank">Session3 - learn</a></li>
-        <li><a class="mypage" href="test.html?" target="_blank">Session3 - test</a></li> -->
+        <li><a class="mypage" href="learn.html?" target="_blank">Session3 - learn</a></li>
+        <li><a class="mypage" href="test.html?" target="_blank">Session3 - test</a></li>
         <li><a href="http://www.sojump.com/jq/7005244.aspx" target="_blank">Post-learning questionnaire</a></li>
         </ul>
     </li>
