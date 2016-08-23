@@ -35,8 +35,11 @@
         }
         $('h2').text($('h2').text() + id);
         var lid = LIDS[id % LIDS.length], tid = TIDS[id % TIDS.length], words = TASKS[id % TASKS.length];
+        var nWarmup = (words.match(/0/g) || []).length;
         var params = [
             // {start: 0, end: 24, id: tid.repeat(2), pid: id},
+            {words: words.replace(/0/g, '4').replace(/[^4]/g, '0'), id: '01'.repeat(nWarmup).slice(0, nWarmup), pid: id},
+            {words: words.replace(/0/g, '4').replace(/[^4]/g, '0'), id: '0'.repeat(nWarmup), pid: id},
             {words: words.replace(/[^1]/g, '0'), id: lid, pid: id},
             {words: words.replace(/[^1]/g, '0'), id: tid, pid: id},
             {words: words.replace(/[^2]/g, '0'), id: lid, pid: id},
@@ -51,7 +54,7 @@
 
         $('a').addClass('disabled');
         $('.stage' + stage.toString() + ' a').removeClass('disabled');
-        $('.stage' + stage.toString()). addClass('highlight');
+        $('.stage' + stage.toString()).addClass('highlight');
     });
     </script>
 </head>
@@ -70,6 +73,12 @@
 实验步骤：
 <ol>
     <!--<li class="stage0"><a class="mypage" href="pretest.html?" target="_blank">Pretest</a> （开始学习前，pretest会先测试您原本对这36个词的熟悉情况）</li>-->
+    <li class="stage0">Warmup
+        <ul>
+        <li><a class="mypage" href="learn.html?" target="_blank">Warmup - learn</a></li>
+        <li><a class="mypage" href="learn.html?" target="_blank">Warmup - test</a></li>
+        </ul>
+    </li>
     <li class="stage1">
         Learning and test （36个单词将以12个为一组分为2个session来学习，每个session学习后会有一个小测）
         <ul>

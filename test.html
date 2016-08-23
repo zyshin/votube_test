@@ -26,6 +26,9 @@
         $('span.all').text(tests.length);
         
         $('button.start').click(function() {
+            var url = window.location.href;
+            var params = deparam(url.substring(url.indexOf('?') + 1));
+            $.get('http://166.111.139.42:8001/vocabulary/start/', params);
             $('div.surveydescription').hide();
             $('div.main').show();            
             $.each(rand_tests, function(index, t) {
@@ -81,7 +84,7 @@
     <p><b>测试后也不要查答案！测试后也不要查答案！测试后也不要查答案！</b>重要的事情说三遍</p>
     <br>
     <p></p>
-    <p>本测试包含2类题型，说明如下（红色为您需要填写的内容）</p>
+    <p>本测试包含1类题型，说明如下（红色为您需要填写的内容）</p>
     <br>
     <p></p>
     <p><span style="line-height:1.5;">1. 单词释义 - 写出给定英文单词的含义，例如：</span></p>
@@ -91,13 +94,13 @@
     <p><span style="line-height:1.5;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u> <span style="color:#f10b00;">用凝固汽油弹攻击</span> </u>&nbsp;&nbsp;<br>
     </span></p>
     <br>
-    <p><span style="line-height:1.5;">2. 单词填空 - 根据给定释义写出对应的英文单词，例如：</span></p>
+    <!--<p><span style="line-height:1.5;">2. 单词填空 - 根据给定释义写出对应的英文单词，例如：</span></p>
     <p></p>
     <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="line-height:1.5;">- 颈背</span></p>
     <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;英文：<u>&nbsp;<span style="color:#fe2419;">nape</span></u>&nbsp;&nbsp;&nbsp;（只写实验中学到的精确单词nape，而不是过去就会的同义词如neck）</p>
     <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="line-height:1.5;">- 用凝固汽油弹攻击</span></p>
     <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;英文：<u>&nbsp;<span style="color:#fe2419;">nape</span></u>&nbsp;&nbsp;&nbsp;（多个中文解释可能对应同一单词）</p>
-    <br>
+    <br>-->
     <p></p>
     <p><span style="line-height:1.5;">注意：该测试旨在反映真实的学习效果，请<b>不要借助工具或猜答案</b> </span></p></span>
 

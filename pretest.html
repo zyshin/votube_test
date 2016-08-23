@@ -25,6 +25,9 @@
         $('span.all').text(tests.length);
         
         $('button.start').click(function() {
+            var url = window.location.href;
+            var params = deparam(url.substring(url.indexOf('?') + 1));
+            $.get('http://166.111.139.42:8001/vocabulary/start/', params);
             $('div.surveydescription').hide();
             $('div.main').show();            
             $.each(rand_tests, function(index, t) {
