@@ -38,15 +38,15 @@
         var nWarmup = (words.match(/0/g) || []).length;
         var params = [
             // {start: 0, end: 24, id: tid.repeat(2), pid: id},
-            {words: words.replace(/0/g, '4').replace(/[^4]/g, '0'), id: '01'.repeat(nWarmup).slice(0, nWarmup), pid: id},
-            {words: words.replace(/0/g, '4').replace(/[^4]/g, '0'), id: '0'.repeat(nWarmup), pid: id},
-            {words: words.replace(/[^1]/g, '0'), id: lid, pid: id},
-            {words: words.replace(/[^1]/g, '0'), id: tid, pid: id},
-            {words: words.replace(/[^2]/g, '0'), id: lid, pid: id},
-            {words: words.replace(/[^2]/g, '0'), id: tid, pid: id},
-            {words: words.replace(/[^3]/g, '0'), id: lid, pid: id},
-            {words: words.replace(/[^3]/g, '0'), id: tid, pid: id},
-            {words: words, id: tid.repeat(3), pid: id},
+            {stage: 0, words: words.replace(/0/g, '4').replace(/[^4]/g, '0'), id: '01'.repeat(nWarmup).slice(0, nWarmup), pid: id},
+            {stage: 0, words: words.replace(/0/g, '4').replace(/[^4]/g, '0'), id: '0'.repeat(nWarmup), pid: id},
+            {stage: 11, words: words.replace(/[^1]/g, '0'), id: lid, pid: id},
+            {stage: 11, words: words.replace(/[^1]/g, '0'), id: tid, pid: id},
+            {stage: 12, words: words.replace(/[^2]/g, '0'), id: lid, pid: id},
+            {stage: 12, words: words.replace(/[^2]/g, '0'), id: tid, pid: id},
+            {stage: 13, words: words.replace(/[^3]/g, '0'), id: lid, pid: id},
+            {stage: 13, words: words.replace(/[^3]/g, '0'), id: tid, pid: id},
+            {stage: 2, words: words, id: tid.repeat(3), pid: id},
         ];
         $.each($('a.mypage'), function(index, a) {
             $(a).attr('href', $(a).attr('href') + $.param(params[index]));
