@@ -2,14 +2,7 @@ var LIDS = ['000001011111', '000101010111', '010101010101', '110101010100', '111
 // var TIDS = ['001010101011', '000010101111', '000000111111', '000001011111', '000101010111', '010101010101', '110101010100', '111101010000', '111111000000', '111110100000', '111010101000', '101010101010', '000000111111', '000101010111', '101010101010', '111110100000', '110101010100', '000001011111', '010101010101', '001010101011', '111111000000', '000010101111', '111010101000', '111101010000'];
 var TIDS = ['000000000000', '000000000000', '000000000000', '000000000000', '000000000000', '000000000000', '000000000000', '000000000000', '000000000000', '000000000000', '000000000000', '000000000000', '000000000000', '000000000000', '000000000000', '000000000000', '000000000000', '000000000000', '000000000000', '000000000000', '000000000000', '000000000000', '000000000000', '000000000000'];
 var TASKS = ['3122001302033210010201333033223012002111330201200121', '3132101330331021330211030022202301022031200203101021', '3222010303321023010321030322312011112002330200100131', '1112033030120312201013021023223321022320000003130131', '2023001202131310031210110013300002021303223202331132', '2010012103103322231011123201300310321002322030100323', '3223310203113130211122100033100231303010220220000213', '1012131202121002333233110332310130020021320200000123', '3122111203100302032221233030303310002010220310301121', '2132223220103030011313110033200120331231103002200021', '2013000102021332121231120033103320321021320300300112', '3120111302103001021331202323203110122020031002300323', '3320201120100031120303023111311212033220203100022330', '2002011332103301132022230132122110330020103010302301', '3322100313221023121310020022003102112013030310200331', '1022010221113030303122030232201101132012310300300233', '3202101200130320131232330023203110210010202310310321', '2122120212030230312313021133200330021030311100000321', '3122120202121032003031130223203010130130130211000323'];
-var WORDS = [
-    // 'bail', 'banquet', 'bequeath', 'brat', 'broil', 'impervious', 'cripple', 'zealotry', 'depot', 'diabetes', 'dictatorship', 'vandalize', 'falter', 'vacant', 'kennel', 'ginger', 'gospel', 'groan', 'hassle', 'gourmet', 'instinct', 'imbecile', 'indulge', 'infantry', 'inferior', 'trophy', 'conglomerate', 'feint', 'repugnant', 'monopoly', 'mortgage', 'onslaught', 'platoon', 'poke', 'porch', 'prank', 'preach', 'provoke', 'raccoon', 'recess', 'repatriate', 'scruple', 'sentiment', 'slant', 'sneak', 'sovereign', 'specimen', 'speculate', 'sting', 'stutter', 'subpoena', 'tuck'
-    'bail', 'banquet', 'bequeath', 'brat', 'broil', 'candid', 'cripple', 'delirium', 'depot', 'diabetes', 'dictatorship', 'emissary', 'falter', 'foyer', 'genealogy', 'ginger', 'gospel', 'groan', 'hassle', 'hemorrhage', 'hunch', 'imbecile', 'indulge', 'infantry', 'inferior', 'instantaneous', 'malfeasance', 'melancholy', 'membrane', 'monopoly', 'mortgage', 'onslaught', 'platoon', 'poke', 'porch', 'prank', 'preach', 'provoke', 'raccoon', 'recess', 'repatriate', 'scruple', 'sentiment', 'slant', 'sneak', 'sovereign', 'specimen', 'speculate', 'sting', 'stutter', 'subpoena', 'tuck'
-];
-var DEFINITIONS = [
-    // '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52'
-    '保释', '宴会', '遗赠', '臭小子', '烤', '不受影响的\n不能透过的', '残疾人', '狂热行为', '车站', '糖尿病', '独裁', '故意破坏', '犹豫', '空的', '狗舍', '姜', '福音', '呻吟', '争吵', '美食家', '本能', '傻瓜', '沉溺\n纵容', '步兵', '低等的', '奖品', '企业集团', '佯攻', '令人厌恶的', '垄断\n独有', '抵押', '猛攻', '排', '戳\n露出\n(~around)闲逛', '门廊', '恶作剧', '布道', '挑衅\n引起', '浣熊', '休庭\n深处', '遣返', '道德良知', '观点\n感情', '倾斜的', '偷偷的', '统治权', '样本', '猜测', '刺\n使疼痛', '口吃', '传票', '塞入'
-];
+var WORDS, DEFINITIONS;
 
 function browserCheck(task) {
     var isChromium = window.chrome,
@@ -46,6 +39,26 @@ Array.prototype.shuffle = function shuffle(){
     for (var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
     return o;
 };
+
+var url = window.location.href,
+    params = deparam(url.substring(url.indexOf('?') + 1));
+if (['0', '4', '10'].indexOf(params.pid) >= 0) {
+    // old words
+    var WORDS = [
+        'bail', 'banquet', 'bequeath', 'brat', 'broil', 'candid', 'cripple', 'delirium', 'depot', 'diabetes', 'dictatorship', 'emissary', 'falter', 'foyer', 'genealogy', 'ginger', 'gospel', 'groan', 'hassle', 'hemorrhage', 'hunch', 'imbecile', 'indulge', 'infantry', 'inferior', 'instantaneous', 'malfeasance', 'melancholy', 'membrane', 'monopoly', 'mortgage', 'onslaught', 'platoon', 'poke', 'porch', 'prank', 'preach', 'provoke', 'raccoon', 'recess', 'repatriate', 'scruple', 'sentiment', 'slant', 'sneak', 'sovereign', 'specimen', 'speculate', 'sting', 'stutter', 'subpoena', 'tuck'
+    ];
+    var DEFINITIONS = [
+        '保释', '宴会', '遗赠', '臭小子', '烤', '直率', '残疾人', '神志不清', '车站', '糖尿病', '独裁', '使者', '犹豫', '门厅', '家谱', '姜', '福音', '呻吟', '争吵', '内出血', '躬身', '傻瓜', '沉溺\n纵容', '步兵', '低等的', '立刻', '渎职', '忧郁', '膜', '垄断\n独有', '抵押', '猛攻', '排', '戳\n露出\n(~around)闲逛', '门廊', '恶作剧', '布道', '挑衅\n引起', '浣熊', '休庭\n深处', '遣返', '道德良知', '观点\n感情', '倾斜的', '偷偷的', '统治权', '样本', '猜测', '刺\n使疼痛', '口吃', '传票', '塞入'
+    ];
+} else {
+    var WORDS = [
+        'bail', 'banquet', 'bequeath', 'brat', 'broil', 'impervious', 'cripple', 'zealotry', 'depot', 'diabetes', 'dictatorship', 'vandalize', 'falter', 'vacant', 'kennel', 'ginger', 'gospel', 'groan', 'hassle', 'gourmet', 'instinct', 'imbecile', 'indulge', 'infantry', 'inferior', 'trophy', 'conglomerate', 'feint', 'repugnant', 'monopoly', 'mortgage', 'onslaught', 'platoon', 'poke', 'porch', 'prank', 'preach', 'provoke', 'raccoon', 'recess', 'repatriate', 'scruple', 'sentiment', 'slant', 'sneak', 'sovereign', 'specimen', 'speculate', 'sting', 'stutter', 'subpoena', 'tuck'
+    ];
+    var DEFINITIONS = [
+        // '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52'
+        '保释', '宴会', '遗赠', '臭小子', '烤', '不受影响的\n不能透过的', '残疾人', '狂热行为', '车站', '糖尿病', '独裁', '故意破坏', '犹豫', '空的', '狗舍', '姜', '福音', '呻吟', '争吵', '美食家', '本能', '傻瓜', '沉溺\n纵容', '步兵', '低等的', '奖品', '企业集团', '佯攻', '令人厌恶的', '垄断\n独有', '抵押', '猛攻', '排', '戳\n露出\n(~around)闲逛', '门廊', '恶作剧', '布道', '挑衅\n引起', '浣熊', '休庭\n深处', '遣返', '道德良知', '观点\n感情', '倾斜的', '偷偷的', '统治权', '样本', '猜测', '刺\n使疼痛', '口吃', '传票', '塞入'
+    ];
+}
 
 function Test(type, text, task, pid) {
     this.type = type;   // For learning: 0 is standard, 1 is movie. For testing: 0 is en -> ch, 1 is ch -> en
