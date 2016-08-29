@@ -52,7 +52,7 @@ if (['0', '4', '10'].indexOf(params.pid) >= 0) {
     ];
 } else {
     var WORDS = [
-        'bail', 'banquet', 'bequeath', 'brat', 'broil', 'impervious', 'cripple', 'zealotry', 'depot', 'diabetes', 'dictatorship', 'vandalize', 'falter', 'vacant', 'kennel', 'ginger', 'gospel', 'groan', 'hassle', 'gourmet', 'instinct', 'imbecile', 'indulge', 'infantry', 'inferior', 'trophy', 'conglomerate', 'feint', 'repugnant', 'monopoly', 'mortgage', 'onslaught', 'platoon', 'poke', 'porch', 'prank', 'preach', 'provoke', 'raccoon', 'recess', 'repatriate', 'scruple', 'sentiment', 'slant', 'sneak', 'sovereign', 'specimen', 'speculate', 'sting', 'stutter', 'subpoena', 'tuck'
+        'bail', 'banquet', 'bequeath', 'brat', 'broil', 'impervious', 'cripple', 'zealotry', 'depot', 'diabetes', 'dictatorship', 'vandalize', 'falter', 'vacant', 'kennel', 'ginger', 'gospel', 'groan', 'hassle', 'gourmet', 'hunch / instinct', 'imbecile', 'indulge', 'infantry', 'inferior', 'trophy', 'conglomerate', 'feint', 'repugnant', 'monopoly', 'mortgage', 'onslaught', 'platoon', 'poke', 'porch', 'prank', 'preach', 'provoke', 'raccoon', 'recess', 'repatriate', 'scruple', 'sentiment', 'slant', 'sneak', 'sovereign', 'specimen', 'speculate', 'sting', 'stutter', 'subpoena', 'tuck'
     ];
     var DEFINITIONS = [
         // '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52'
