@@ -42,7 +42,7 @@ Array.prototype.shuffle = function shuffle(){
 
 var url = window.location.href,
     params = deparam(url.substring(url.indexOf('?') + 1));
-if (['0', '4', '10'].indexOf(params.pid) >= 0) {
+if (['4', '10'].indexOf(params.pid) >= 0) {
     // old words
     var WORDS = [
         'bail', 'banquet', 'bequeath', 'brat', 'broil', 'candid', 'cripple', 'delirium', 'depot', 'diabetes', 'dictatorship', 'emissary', 'falter', 'foyer', 'genealogy', 'ginger', 'gospel', 'groan', 'hassle', 'hemorrhage', 'hunch', 'imbecile', 'indulge', 'infantry', 'inferior', 'instantaneous', 'malfeasance', 'melancholy', 'membrane', 'monopoly', 'mortgage', 'onslaught', 'platoon', 'poke', 'porch', 'prank', 'preach', 'provoke', 'raccoon', 'recess', 'repatriate', 'scruple', 'sentiment', 'slant', 'sneak', 'sovereign', 'specimen', 'speculate', 'sting', 'stutter', 'subpoena', 'tuck'
@@ -50,14 +50,21 @@ if (['0', '4', '10'].indexOf(params.pid) >= 0) {
     var DEFINITIONS = [
         '保释', '宴会', '遗赠', '臭小子', '烤', '直率', '残疾人', '神志不清', '车站', '糖尿病', '独裁', '使者', '犹豫', '门厅', '家谱', '姜', '福音', '呻吟', '争吵', '内出血', '躬身', '傻瓜', '沉溺\n纵容', '步兵', '低等的', '立刻', '渎职', '忧郁', '膜', '垄断\n独有', '抵押', '猛攻', '排', '戳\n露出\n(~around)闲逛', '门廊', '恶作剧', '布道', '挑衅\n引起', '浣熊', '休庭\n深处', '遣返', '道德良知', '观点\n感情', '倾斜的', '偷偷的', '统治权', '样本', '猜测', '刺\n使疼痛', '口吃', '传票', '塞入'
     ];
-} else {
+} else if (['1', '2', '3', '5', '7', '8', '9', '11', '12', '13', '14', '15', '18', '19'].indexOf(params.id) >= 0) {
     var WORDS = [
         'bail', 'banquet', 'bequeath', 'brat', 'broil', 'impervious', 'cripple', 'zealotry', 'depot', 'diabetes', 'dictatorship', 'vandalize', 'falter', 'vacant', 'kennel', 'ginger', 'gospel', 'groan', 'hassle', 'gourmet', 'instinct', 'imbecile', 'indulge', 'infantry', 'inferior', 'trophy', 'conglomerate', 'feint', 'repugnant', 'monopoly', 'mortgage', 'onslaught', 'platoon', 'poke', 'porch', 'prank', 'preach', 'provoke', 'raccoon', 'recess', 'repatriate', 'scruple', 'sentiment', 'slant', 'sneak', 'sovereign', 'specimen', 'speculate', 'sting', 'stutter', 'subpoena', 'tuck'
     ];
     var DEFINITIONS = [
-        // '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52'
         '保释', '宴会', '遗赠', '臭小子', '烤', '不受影响的\n不能透过的', '残疾人', '狂热行为', '车站', '糖尿病', '独裁', '故意破坏', '犹豫', '空的', '狗舍', '姜', '福音', '呻吟', '争吵', '美食家', '本能', '傻瓜', '沉溺\n纵容', '步兵', '低等的', '奖品', '企业集团', '佯攻', '令人厌恶的', '垄断\n独有', '抵押', '猛攻', '排', '戳\n露出\n(~around)闲逛', '门廊', '恶作剧', '布道', '挑衅\n引起', '浣熊', '休庭\n深处', '遣返', '道德良知', '观点\n感情', '倾斜的', '偷偷的', '统治权', '样本', '猜测', '刺\n使疼痛', '口吃', '传票', '塞入'
     ];
+} else {
+    var WORDS = ['acquiesce', 'aesthetic', 'affidavit', 'allege', 'allegiance', 'aloft', 'amateur', 'anagram', 'anguish', 'apron', 'armada', 'arson', 'asthma', 'atrocity', 'axiom', 'badge', 'bandit', 'barbarous', 'baton', 'battalion', 'beacon', 'blasphemy', 'blunder', 'breach', 'bruise', 'canine', 'carnage', 'clam', 'confiscate', 'conspiracy', 'convene', 'custody', 'decree', 'defiance', 'dossier', 'dungeon', 'errand', 'extort', 'farce', 'gardenia', 'gentry', 'gimmick', 'goblet', 'grove', 'grovel', 'hallucination', 'heinous', 'heirloom', 'hideous', 'holster', 'hysteria', 'imbue', 'indictment', 'infant', 'infiltrate', 'inhale', 'interrogate', 'jurisdiction', 'lament', 'lethal', 'martyr', 'menace', 'narcotic', 'nausea', 'occult', 'pagan', 'persecute', 'pervert', 'portfolio', 'prophecy', 'prosecute', 'quarantine', 'quartet', 'rally', 'rampage', 'reckless', 'remorse', 'rendezvous', 'ridge', 'sapphire', 'sarcasm', 'sermon', 'stamina', 'stroll', 'suffocate', 'tenant', 'torment', 'treacherous', 'trinket', 'ulcer', 'vengeance', 'venom'];
+    var DEFINITIONS = WORDS;
+    TASKS[0] = '0020000312100100020031000000320102000203303201030002022330001130000022100101010000300300';
+    // TASKS[6] = '';
+    TASKS[16] = '3000023000002021002000121233003030113000020010103200000002130000021100003000000230021013';
+    // TASKS[17] = '';
+    // TODO: expand TASKS[20]
 }
 
 function Test(type, text, task, pid) {
