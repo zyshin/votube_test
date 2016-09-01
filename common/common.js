@@ -60,11 +60,19 @@ if (['4', '10'].indexOf(params.pid) >= 0) {
 } else {
     var WORDS = ['acquiesce', 'aesthetic', 'affidavit', 'allege', 'allegiance', 'aloft', 'anagram', 'anguish', 'apron', 'armada', 'arson', 'asthma', 'atrocity', 'axiom', 'badge', 'bandit', 'barbarous', 'baton', 'battalion', 'beacon', 'blasphemy', 'blunder', 'breach', 'bruise', 'canine', 'carnage', 'clam', 'confiscate', 'conspiracy', 'convene', 'custody', 'decree', 'defiance', 'dossier', 'dungeon', 'errand', 'extort', 'farce', 'gardenia', 'gentry', 'gimmick', 'goblet', 'grovel', 'hallucination', 'heinous', 'heirloom', 'hideous', 'holster', 'imbue', 'indictment', 'infant', 'infiltrate', 'inhale', 'interrogate', 'jurisdiction', 'lament', 'lethal', 'martyr', 'menace', 'narcotic', 'nausea', 'occult', 'pagan', 'persecute', 'portfolio', 'prophecy', 'prosecute', 'quarantine', 'quartet', 'rally', 'rampage', 'reckless', 'remorse', 'rendezvous', 'ridge', 'sapphire', 'sarcasm', 'sermon', 'stamina', 'stroll', 'suffocate', 'tenant', 'torment', 'treacherous', 'trinket', 'ulcer', 'vengeance', 'venom'];
     var DEFINITIONS = WORDS;
-    TASKS[0] = '0020000312100100020031000000320102000203303201030002022330001130000022100101010000300300';
-    // TASKS[6] = '';
-    TASKS[16] = '3000023000002021002000121233003030113000020010103200000002130000021100003000000230021013';
-    // TASKS[17] = '';
-    // TODO: expand TASKS[20]
+    TASKS[0] = '0020000312100100020031000000320102000203303201030002022330001130000022100101010000300300';  //zys
+    TASKS[16] = '3000023000002021002000121233003030113000020010103200000002130000021100003000000230021013'; //yyn
+    // TASKS[17] = '';  // mcc
+    if (TASKS.length == 20) {
+        TASKS.push('0002000030320300030110000000320101000200100203000000132020002123100013200201132001300300'); // dnx
+    }
+    if (TASKS.length == 21) {
+        TASKS.push('0002000030320300030110000000320101000200100203000000132020002123100013200201132001300300'); // hpk
+    }
+    if (TASKS.length == 22) {
+        TASKS.push(''); // lss
+    }
+    TASKS[7] = '0010300321230200310110000000300201000203300102030002112330002230000010200002101000000300';  // pxy
 }
 
 function Test(type, text, task, pid) {
