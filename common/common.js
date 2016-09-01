@@ -50,7 +50,7 @@ if (['4', '10'].indexOf(params.pid) >= 0) {
     var DEFINITIONS = [
         '保释', '宴会', '遗赠', '臭小子', '烤', '直率', '残疾人', '神志不清', '车站', '糖尿病', '独裁', '使者', '犹豫', '门厅', '家谱', '姜', '福音', '呻吟', '争吵', '内出血', '躬身', '傻瓜', '沉溺\n纵容', '步兵', '低等的', '立刻', '渎职', '忧郁', '膜', '垄断\n独有', '抵押', '猛攻', '排', '戳\n露出\n(~around)闲逛', '门廊', '恶作剧', '布道', '挑衅\n引起', '浣熊', '休庭\n深处', '遣返', '道德良知', '观点\n感情', '倾斜的', '偷偷的', '统治权', '样本', '猜测', '刺\n使疼痛', '口吃', '传票', '塞入'
     ];
-} else if (['1', '2', '3', '5', '7', '8', '9', '11', '12', '13', '14', '15', '18', '19'].indexOf(params.pid) >= 0) {
+} else if (['1', '2', '5', '8', '9', '11', '12', '13', '14', '15', '18', '19'].indexOf(params.pid) >= 0) {
     var WORDS = [
         'bail', 'banquet', 'bequeath', 'brat', 'broil', 'impervious', 'cripple', 'zealotry', 'depot', 'diabetes', 'dictatorship', 'vandalize', 'falter', 'vacant', 'kennel', 'ginger', 'gospel', 'groan', 'hassle', 'gourmet', 'instinct', 'imbecile', 'indulge', 'infantry', 'inferior', 'trophy', 'conglomerate', 'feint', 'repugnant', 'monopoly', 'mortgage', 'onslaught', 'platoon', 'poke', 'porch', 'prank', 'preach', 'provoke', 'raccoon', 'recess', 'repatriate', 'scruple', 'sentiment', 'slant', 'sneak', 'sovereign', 'specimen', 'speculate', 'sting', 'stutter', 'subpoena', 'tuck'
     ];
@@ -73,6 +73,7 @@ if (['4', '10'].indexOf(params.pid) >= 0) {
         TASKS.push(''); // lss
     }
     TASKS[7] = '0010300321230200310110000000300201000203300102030002112330002230000010200002101000000300';  // pxy
+    // TASKS[3] = '';  // hy
 }
 
 function Test(type, text, task, pid) {
