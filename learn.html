@@ -54,7 +54,13 @@
         $('button.start').click(function() {
             var url = window.location.href;
             var params = deparam(url.substring(url.indexOf('?') + 1));
-            $.get('http://166.111.139.42:8001/learn/start/', params);
+            $.get('http://166.111.139.42:8001/learn/start/', params).fail(function(r) {
+                if (!r.responseText) {
+                    alert('网络错误：试验结果将不会上传\n请不要关闭页面并立即与主试联系。');
+                    alert('网络错误：试验结果将不会上传\n请不要关闭页面并立即与主试联系。');
+                    alert('网络错误：试验结果将不会上传\n请不要关闭页面并立即与主试联系。');
+                }
+            });
             $('div.surveydescription').hide();
             $('div.main').show();
             $('div.surveydescription').empty().append($('<img class="rest" src="common/rest.jpg" />'));
@@ -125,8 +131,8 @@
         <td><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="line-height:1.5;">2. 传统词典 - 浏览字典词条学习</span></p></td>
     </tr>
     <tr>
-        <td><p><a href="http://www.eslwriter.org:8003/votube/?word=intrigue" target="_blank"><img class="example" src="common/example2.png" /></a></p></td>
-        <td><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://166.111.139.15:8002/proxy/?youdao=&amp;url=http://dict.youdao.com/w/intrigue" target="_blank"><img class="example" src="common/example1.png" /></p></a></td>
+        <td><p><a href="http://www.eslwriter.org:8003/votube/?word=outgoing" target="_blank"><img class="example" src="common/example2.png" /></a></p></td>
+        <td><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://166.111.139.15:8002/proxy/?youdao=&amp;url=http://dict.youdao.com/w/outgoing" target="_blank"><img class="example" src="common/example1.png" /></p></a></td>
     </tr>
     <tr>
         <td><b>（戴上耳机观看若干片段，1080P大显示屏效果更佳）</b></td>

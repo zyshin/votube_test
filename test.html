@@ -28,7 +28,13 @@
         $('button.start').click(function() {
             var url = window.location.href;
             var params = deparam(url.substring(url.indexOf('?') + 1));
-            $.get('http://166.111.139.42:8001/vocabulary/start/', params);
+            $.get('http://166.111.139.42:8001/vocabulary/start/', params).fail(function(r) {
+                if (!r.responseText) {
+                    alert('网络错误：试验结果将不会上传\n请不要关闭页面并立即与主试联系。');
+                    alert('网络错误：试验结果将不会上传\n请不要关闭页面并立即与主试联系。');
+                    alert('网络错误：试验结果将不会上传\n请不要关闭页面并立即与主试联系。');
+                }
+            });
             $('div.surveydescription').hide();
             $('div.main').show();            
             $.each(rand_tests, function(index, t) {
