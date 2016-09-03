@@ -59,7 +59,9 @@ if (['4', '10'].indexOf(params.pid) >= 0) {
     ];
 } else {
     var WORDS = ['acquiesce', 'aesthetic', 'affidavit', 'allege', 'allegiance', 'aloft', 'anagram', 'anguish', 'apron', 'armada', 'arson', 'asthma', 'atrocity', 'axiom', 'badge', 'bandit', 'barbarous', 'baton', 'battalion', 'beacon', 'blasphemy', 'blunder', 'breach', 'bruise', 'canine', 'carnage', 'clam', 'confiscate', 'conspiracy', 'convene', 'custody', 'decree', 'defiance', 'dossier', 'dungeon', 'errand', 'extort', 'farce', 'gardenia', 'gentry', 'gimmick', 'goblet', 'grovel', 'hallucination', 'heinous', 'heirloom', 'hideous', 'holster', 'imbue', 'indictment', 'infant', 'infiltrate', 'inhale', 'interrogate', 'jurisdiction', 'lament', 'lethal', 'martyr', 'menace', 'narcotic', 'nausea', 'occult', 'pagan', 'persecute', 'portfolio', 'prophecy', 'prosecute', 'quarantine', 'quartet', 'rally', 'rampage', 'reckless', 'remorse', 'rendezvous', 'ridge', 'sapphire', 'sarcasm', 'sermon', 'stamina', 'stroll', 'suffocate', 'tenant', 'torment', 'treacherous', 'trinket', 'ulcer', 'vengeance', 'venom'];
-    var DEFINITIONS = WORDS;
+    var DEFINITIONS = [
+        '默许', '美学的', '宣誓书', '宣称', '忠诚', '在空中', '变位词', '使痛苦', '围裙', '舰队', '纵火', '哮喘', '暴行', '公理', '徽章', '土匪', '野蛮的', '指挥棒', '营', '灯塔', '亵渎神明', '大错', '违背', '擦伤', '犬的', '大屠杀', '蛤//沉默', '没收', '阴谋', '召集', '保管', '法令', '蔑视', '档案', '地牢', '使命', '敲诈', '闹剧', '栀子花', '贵族', '暗机关', '高脚杯', '匍匐', '幻觉', '可憎的', '传家宝', '丑恶的', '手枪皮套', '灌输', '起诉书', '婴儿', '使潜入', '吸气', '审问', '司法权', '哀悼', '致命的', '烈士', '威胁', '麻醉药', '恶心', '超自然的', '异教徒', '迫害', '投资', '预言', '检举', '检疫', '四重奏', '集会', '疯狂', '鲁莽的', '懊悔', '会合地点', '脊', '蓝宝石', '讥讽', '布道', '耐力', '溜达', '窒息', '租户', '痛苦', '背叛的', '小装饰物', '溃疡', '报复', '怨恨'
+    ];
     TASKS[0] = '0020000312100100020031000000320102000203303201030002022330001130000022100101010000300300';  //zys
     TASKS[16] = '3000023000002021002000121233003030113000020010103200000002130000021100003000000230021013'; //yyn
     // TASKS[17] = '';  // mcc
